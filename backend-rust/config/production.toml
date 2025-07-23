@@ -1,0 +1,53 @@
+[server]
+host = "127.0.0.1"
+port = 9080
+
+[database]
+url = "postgres://postgres:root2024@localhost:5432/luck_game?client_encoding=UTF8&server_encoding=UTF8"
+
+[web3]
+platform_address = "0x83f5dF1c01DDc0F97BC622a44d6C1f99B71eFEBD"
+pool_address = "0x4F989FdF2aFf058f3e36afDe794BF9caCc72479f"
+provider_url = "https://ethereum-rpc.publicnode.com"
+chain_id = 1
+
+[contract]
+url = "https://ethereum-rpc.publicnode.com"
+address = "0xC6c897232Ff14aB6F8586DD91042a0eA8156e36a"
+owner = "0xA2eA314813331737f17cC75559c859806f415415"
+rpc_urls = [
+    "http://localhost:7546",
+    "https://ethereum-rpc.publicnode.com",
+    "https://eth.llamarpc.com",
+    "https://rpc.ankr.com/eth",
+    "https://ethereum.publicnode.com",
+    "https://1rpc.io/eth"
+]
+
+[week_action]
+platform_account = "0x83f5dF1c01DDc0F97BC622a44d6C1f99B71eFEBD"
+prize_pool_account = "0x4F989FdF2aFf058f3e36afDe794BF9caCc72479f"
+confirm_level_one_agents = false
+confirm_level_two_agents = false
+confirm_level_common_agents = false
+sunday_lottery_distribution = false
+
+[prize_distribution]
+user_pool_percentage = 0.7
+first_prize_percentage = 0.5
+second_prize_percentage = 0.3
+third_prize_percentage = 0.2
+level_one_agent_percentage = 0.15
+level_two_agent_percentage = 0.1
+
+[auth]
+jwt_secret = "${JWT_SECRET}"
+token_expiration = 7200
+token_duration_hours = 24
+
+[redis]
+url = "${REDIS_URL}"
+pool_max_size = 32
+connection_timeout_secs = 5
+idle_timeout_secs = 300
+queue_mode = "fifo"

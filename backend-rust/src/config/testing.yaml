@@ -1,0 +1,28 @@
+# config/testing.yaml
+server:
+  address: "0.0.0.0"
+  port: 9081
+
+database:
+  url: "postgres://test_user:test_password@tests-db:5432/lottery_test"
+  pool_size: 10
+  max_connections: 50
+
+web3:
+  provider_url: "https://sepolia.infura.io/v3/YOUR-PROJECT-ID"
+  platform_address: "0x2345678901234567890123456789012345678901"
+  pool_address: "0x1098765432109876543210987654321098765432"
+  chain_id: 11155111  # Sepolia 测试网络
+
+auth:
+  jwt_secret: "test_secret_key"
+  token_expiration: 3600
+  token_duration_hours: 24
+
+redis:
+  url: "redis://tests-redis:6379"
+  pool:
+    max_size: 8
+    connection_timeout_secs: 2
+    idle_timeout_secs: 60
+    queue_mode: "fifo"

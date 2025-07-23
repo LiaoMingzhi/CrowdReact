@@ -1,0 +1,9 @@
+# config/local.yaml
+# 这个文件应该被添加到 .gitignore
+database:
+  url: "postgres://local_user:local_password@localhost:5432/lottery_local"
+
+web3:
+  provider_url: "http://localhost:8545"
+  platform_address: "0x4567890123456789012345678901234567890123"
+  pool_address: "0x3210987654321098765432109876543210987654"

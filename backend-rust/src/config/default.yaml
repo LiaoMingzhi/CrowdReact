@@ -1,0 +1,62 @@
+# config/default.yaml
+server:
+  host: "127.0.0.1"
+  port: 9080
+
+database:
+  url: "postgres://user:pass@localhost:5432/dbname"
+
+web3:
+  url: "http://localhost:7546"
+  platform_address: "0xA2eA314813331737f17cC75559c859806f415415"
+  chain_id: 1337
+
+contract:
+  address: "0x121526334F4dD5b912EFce99cb1EefB96c4F091A"
+  owner: "0xA2eA314813331737f17cC75559c859806f415415"
+
+redis:
+  url: "redis://127.0.0.1:6379"
+  pool:
+    max_size: 16
+    connection_timeout_secs: 5
+    idle_timeout_secs: 300
+    queue_mode: "fair"
+
+auth:
+  jwt_secret: "qBjwXDDETA1AhJ9PSsJrCu0uG7Krdp1ql8A3ccdKrAM="
+  token_expiration: 3600
+  token_duration_hours: 24
+
+chain:
+  id: 1337
+
+week_action:
+  platform_account: "0xA2eA314813331737f17cC75559c859806f415415"
+  prize_pool_account: "0x0987654321098765432109876543210987654321"
+  confirm_level_one_agents: false
+  confirm_level_two_agents: false
+  confirm_level_common_agents: false
+  sunday_lottery_distribution: false
+
+week_today:
+  today: ""
+
+prize_distribution:
+  user_pool_percentage: 0.7
+  first_prize_percentage: 0.5
+  second_prize_percentage: 0.3
+  third_prize_percentage: 0.2
+  level_one_agent_percentage: 0.15
+  level_two_agent_percentage: 0.1
+
+geoip:
+  blocked_countries: ["ZR", "ZW"]
+  database_path: "data/GeoLite2-Country.mmdb"
+  block_message: "Sorry, we do not accept bets from your country."
+  block_status_code: 403
+  block_headers:
+    - "X-Blocked-Country"
+    - "X-Blocked-Country-Code"
+  blocked_ips:
+  whitelist_ips:

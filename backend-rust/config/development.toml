@@ -1,0 +1,74 @@
+[server]
+host = "127.0.0.1"
+port = 9080
+
+[database]
+url = "postgres://postgres:root2024@localhost:5432/luck_game?client_encoding=UTF8&server_encoding=UTF8"
+
+[web3]
+url = "http://localhost:7546"
+private_key = "your_private_key_here"
+platform_address = "0xA2eA314813331737f17cC75559c859806f415415"
+pool_address = "0x4F989FdF2aFf058f3e36afDe794BF9caCc72479f"
+provider_url = "http://localhost:7546"
+chain_id = 1337
+
+[contract]
+url = "http://localhost:7546"
+address = "0x121526334F4dD5b912EFce99cb1EefB96c4F091A"
+owner = "0xA2eA314813331737f17cC75559c859806f415415"
+rpc_urls = [
+    "http://localhost:7546",
+    "https://ethereum-rpc.publicnode.com",
+    "https://eth.llamarpc.com",
+    "https://rpc.ankr.com/eth",
+    "https://ethereum.publicnode.com",
+    "https://1rpc.io/eth"
+]
+
+[week_action]
+platform_account = "0xA2eA314813331737f17cC75559c859806f415415"
+prize_pool_account = "0x4F989FdF2aFf058f3e36afDe794BF9caCc72479f"
+confirm_level_one_agents = false
+confirm_level_two_agents = false
+confirm_level_common_agents = false
+sunday_lottery_distribution = false
+
+[prize_distribution]
+user_pool_percentage = 0.7
+first_prize_percentage = 0.5
+second_prize_percentage = 0.3
+third_prize_percentage = 0.2
+level_one_agent_percentage = 0.15
+level_two_agent_percentage = 0.1
+
+[auth]
+jwt_secret = "qBjwXDDETA1AhJ9PSsJrCu0uG7Krdp1ql8A3ccdKrAM="
+token_expiration = 3600
+token_duration_hours = 24
+
+[redis]
+url = "redis://127.0.0.1:6379"
+pool_max_size = 16
+connection_timeout_secs = 5
+idle_timeout_secs = 300
+queue_mode = "fifo"
+
+[scheduler]
+draw_lottery_cron = "0 0 * * * *"        # 每小时的零点
+process_rewards_cron = "0 5 * * * *"      # 每小时的第5分钟
+cleanup_expired_cron = "0 30 * * * *"     # 每小时的第30分钟
+
+[log]
+level = "debug"
+
+[week_today]
+today = ""
+
+[geoip]
+database_path = "data/GeoLite2-Country.mmdb"
+blocked_countries = ["ZR", "ZW"]  # Add country codes you want to block
+block_message = "Access denied from your country"
+block_status_code = 403
+block_headers = ["X-Blocked-Country"]
+

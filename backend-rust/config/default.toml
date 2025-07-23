@@ -1,0 +1,65 @@
+[server]
+host = "127.0.0.1"
+port = 9080
+
+[database]
+url = "postgres://postgres:root2024@localhost:5432/luck_game?client_encoding=UTF8&server_encoding=UTF8"
+
+[web3]
+url = "http://localhost:7546"
+
+[contract]
+rpc_url = "http://localhost:7546"
+address = "0xB8EFA6610A759eB43Ef70Ef768f4F3407A38832d"
+owner = "0xA2eA314813331737f17cC75559c859806f415415"
+
+[week_action]
+platform_account = "0xa2ea314813331737f17cc75559c859806f415415"
+prize_pool_account = "0x4F989FdF2aFf058f3e36afDe794BF9caCc72479f"
+
+[prize_distribution]
+user_pool_percentage = 0.7
+first_prize_percentage = 0.5
+second_prize_percentage = 0.3
+third_prize_percentage = 0.2
+level_one_agent_percentage = 0.15
+level_two_agent_percentage = 0.1
+
+[chain]
+id = 1337
+
+[redis]
+url = "redis://127.0.0.1:6379"
+
+[redis.pool]
+max_size = 16
+connection_timeout_secs = 5
+idle_timeout_secs = 300
+queue_mode = "fifo"
+
+[auth]
+token_expiration = 3600
+jwt_secret = "qBjwXDDETA1AhJ9PSsJrCu0uG7Krdp1ql8A3ccdKrAM="
+token_duration_hours = 24
+
+[platform]
+account = "0xa2ea314813331737f17cc75559c859806f415415"
+prize_pool = "0x4F989FdF2aFf058f3e36afDe794BF9caCc72479f"
+
+[prize]
+user_pool_percentage = 60.0
+first_prize_percentage = 30.0
+second_prize_percentage = 20.0
+third_prize_percentage = 10.0
+level_one_agent_percentage = 20.0
+level_two_agent_percentage = 10.0
+
+[week_today]
+today = "monday"
+
+[geoip]
+database_path = "data/GeoLite2-Country.mmdb"
+blocked_countries = ["US", "CN"]  # Add country codes you want to block
+block_message = "Access denied from your country"
+block_status_code = 403
+block_headers = ["X-Blocked-Country"]

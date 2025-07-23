@@ -1,0 +1,28 @@
+# config/development.yaml
+server:
+  address: "127.0.0.1"
+  port: 9080
+
+database:
+  url: "postgres://dev_user:root2024@localhost:5432/lottery_dev"
+  pool_size: 5
+  max_connections: 20
+
+web3:
+  provider_url: "http://localhost:7546"
+  platform_address: "0xA2eA314813331737f17cC75559c859806f415415"
+  pool_address: "0x0987654321098765432109876543210987654321"
+  chain_id: 1337  # 本地开发链ID
+
+auth:
+  jwt_secret: "qBjwXDDETA1AhJ9PSsJrCu0uG7Krdp1ql8A3ccdKrAM="
+  token_expiration: 3600  # 1 hour in seconds
+  token_duration_hours: 24
+
+redis:
+  url: "redis://127.0.0.1:6379"
+  pool:
+    max_size: 16
+    connection_timeout_secs: 5
+    idle_timeout_secs: 300
+    queue_mode: "fifo"  # 可选值: "fifo" 或 "lifo"

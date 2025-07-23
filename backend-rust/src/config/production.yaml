@@ -1,0 +1,28 @@
+# config/production.yaml
+server:
+  address: "0.0.0.0"
+  port: 9080
+
+database:
+  url: "postgres://prod_user:prod_password@prod-db.example.com:5432/lottery_prod"
+  pool_size: 20
+  max_connections: 100
+
+web3:
+  provider_url: "https://mainnet.infura.io/v3/YOUR-PROJECT-ID"
+  platform_address: "0x3456789012345678901234567890123456789012"
+  pool_address: "0x2109876543210987654321098765432109876543"
+  chain_id: 1  # 以太坊主网
+
+auth:
+  jwt_secret: "${JWT_SECRET}"  # 从环境变量读取
+  token_expiration: 7200  # 2 hours
+  token_duration_hours: 24
+
+redis:
+  url: "${REDIS_URL}"  # 从环境变量读取
+  pool:
+    max_size: 32
+    connection_timeout_secs: 5
+    idle_timeout_secs: 300
+    queue_mode: "fifo"
