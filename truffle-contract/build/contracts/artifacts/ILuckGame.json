@@ -1,0 +1,435 @@
+{
+  "contractName": "ILuckGame",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "InvalidBetAmount",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Bet",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "placeBet",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"InvalidBetAmount\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Bet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"placeBet\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"\\u5e78\\u8fd0\\u6e38\\u620f\\u5408\\u7ea6\\u7684\\u63a5\\u53e3\\u5b9a\\u4e49\",\"events\":{\"Bet(address,uint256)\":{\"params\":{\"amount\":\"\\u4e0b\\u6ce8\\u91d1\\u989d\",\"user\":\"\\u4e0b\\u6ce8\\u7528\\u6237\\u5730\\u5740\"}}},\"kind\":\"dev\",\"methods\":{\"getBalance(address)\":{\"params\":{\"user\":\"\\u7528\\u6237\\u5730\\u5740\"},\"returns\":{\"_0\":\"\\u7528\\u6237\\u7684\\u5f53\\u524d\\u4f59\\u989d\"}},\"placeBet()\":{\"details\":\"\\u5fc5\\u987b\\u9644\\u5e26\\u9002\\u5f53\\u7684 ETH \\u91d1\\u989d\"}},\"title\":\"ILuckGame\",\"version\":1},\"userdoc\":{\"errors\":{\"InvalidBetAmount(uint256)\":[{\"notice\":\"\\u4e0b\\u6ce8\\u91d1\\u989d\\u65e0\\u6548\\u65f6\\u629b\\u51fa\"}]},\"events\":{\"Bet(address,uint256)\":{\"notice\":\"\\u7528\\u6237\\u4e0b\\u6ce8\\u65f6\\u89e6\\u53d1\"}},\"kind\":\"user\",\"methods\":{\"getBalance(address)\":{\"notice\":\"\\u67e5\\u8be2\\u7528\\u6237\\u4f59\\u989d\"},\"placeBet()\":{\"notice\":\"\\u4e0b\\u6ce8\\u51fd\\u6570\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/ILuckGame.sol\":\"ILuckGame\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/ILuckGame.sol\":{\"keccak256\":\"0xd5d50d2f04bd9097e8c933c1ab500bc1ce92e2ffb5967580d6bd20624fab1193\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d2fcce8923830bb1b08f5ef29ef9174b5152cf4bc00b5e0855d28646c18b2154\",\"dweb:/ipfs/QmVBouzRtpdyKMYA3LABz3nM2HEmt58Q92xoBycoPDs2Dh\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\n/**\r\n * @title ILuckGame\r\n * @dev 幸运游戏合约的接口定义\r\n */\r\ninterface ILuckGame {\r\n    /**\r\n     * @dev 事件定义\r\n     * 记录所有重要的状态变更\r\n     */\r\n    \r\n    /// @notice 用户下注时触发\r\n    /// @param user 下注用户地址\r\n    /// @param amount 下注金额\r\n    event Bet(address indexed user, uint256 amount);\r\n\r\n    /// @notice 用户提现时触发\r\n    /// @param user 提现用户地址\r\n    /// @param amount 提现金额\r\n    // event Win(address indexed user, uint256 amount);\r\n\r\n    /// @notice 代理提取佣金时触发\r\n    /// @param agent 代理地址\r\n    /// @param amount 佣金金额\r\n    // event AgentCommission(address indexed agent, uint256 amount);\r\n\r\n    /// @notice 添加新代理时触发\r\n    /// @param agent 新代理地址\r\n    // event AgentAdded(address indexed agent);\r\n\r\n    /// @notice 移除代理时触发\r\n    /// @param agent 被移除的代理地址\r\n    // event AgentRemoved(address indexed agent);\r\n\r\n    /// @notice 设置用户代理关系时触发\r\n    /// @param user 用户地址\r\n    /// @param agent 代理地址\r\n    // event AgentRelationSet(address indexed user, address indexed agent);\r\n\r\n    /**\r\n     * @dev 错误定义\r\n     * 使用自定义错误来节省 gas 并提供更好的错误信息\r\n     */\r\n    \r\n    /// @notice 下注金额无效时抛出\r\n    error InvalidBetAmount(uint256 amount);\r\n\r\n    /// @notice 下注数字无效时抛出\r\n    // error InvalidNumber(uint256 number);\r\n\r\n    /// @notice 非代理调用代理功能时抛出\r\n    // error NotAgent(address caller);\r\n\r\n    /// @notice 尝试提取零余额时抛出\r\n    // error NoBalance();\r\n\r\n    /// @notice 转账失败时抛出\r\n    // error TransferFailed();\r\n\r\n    /**\r\n     * @dev 函数定义\r\n     */\r\n    \r\n    /// @notice 下注函数\r\n    /// @dev 必须附带适当的 ETH 金额\r\n    function placeBet() external payable;\r\n\r\n    /// @notice 提现函数\r\n    /// @dev 提取用户的所有可用余额\r\n    // function withdraw() external;\r\n\r\n    /// @notice 提取代理佣金\r\n    /// @dev 只能由代理调用\r\n    // function withdrawCommission() external;\r\n\r\n    /// @notice 添加新代理\r\n    /// @param agent 要添加的代理地址\r\n    /// @dev 只能由合约所有者调用\r\n    // function addAgent(address agent) external;\r\n\r\n    /// @notice 移除代理\r\n    /// @param agent 要移除的代理地址\r\n    /// @dev 只能由合约所有者调用\r\n    // function removeAgent(address agent) external;\r\n\r\n    /// @notice 设置用户的代理关系\r\n    /// @param user 用户地址\r\n    /// @param agent 代理地址\r\n    /// @dev 只能由合约所有者调用\r\n    // function setAgentRelation(address user, address agent) external;\r\n\r\n    /// @notice 查询用户余额\r\n    /// @param user 用户地址\r\n    /// @return 用户的当前余额\r\n    function getBalance(address user) external view returns (uint256);\r\n\r\n    /// @notice 查询代理佣金\r\n    /// @param agent 代理地址\r\n    /// @return 代理的当前佣金余额\r\n    // function getAgentCommission(address agent) external view returns (uint256);\r\n\r\n    /// @notice 检查地址是否为代理\r\n    /// @param user 要检查的地址\r\n    /// @return 是否为代理\r\n    // function isAgent(address user) external view returns (bool);\r\n\r\n    /// @notice 获取用户的代理\r\n    /// @param user 用户地址\r\n    /// @return 用户的代理地址\r\n    // function getAgentForUser(address user) external view returns (address);\r\n}",
+  "sourcePath": "D:\\workspace\\Ethereum\\CrowdReact\\truffle-contract\\contracts\\interfaces\\ILuckGame.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/ILuckGame.sol",
+    "exportedSymbols": {
+      "ILuckGame": [
+        254
+      ]
+    },
+    "id": 255,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 228,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:24:1"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ILuckGame",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 229,
+          "nodeType": "StructuredDocumentation",
+          "src": "61:72:1",
+          "text": " @title ILuckGame\n @dev 幸运游戏合约的接口定义"
+        },
+        "fullyImplemented": false,
+        "id": 254,
+        "linearizedBaseContracts": [
+          254
+        ],
+        "name": "ILuckGame",
+        "nameLocation": "145:9:1",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 230,
+              "nodeType": "StructuredDocumentation",
+              "src": "254:109:1",
+              "text": "@notice 用户下注时触发\n @param user 下注用户地址\n @param amount 下注金额"
+            },
+            "eventSelector": "c0ae20ffbb1eca06a840c35912bdb9f8e6e1fad1f028c875be0ddf54d480d71e",
+            "id": 236,
+            "name": "Bet",
+            "nameLocation": "375:3:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 235,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 232,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "395:4:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 236,
+                  "src": "379:20:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 231,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "379:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 234,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "409:6:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 236,
+                  "src": "401:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 233,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "401:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "378:38:1"
+            },
+            "src": "369:48:1"
+          },
+          {
+            "documentation": {
+              "id": 237,
+              "nodeType": "StructuredDocumentation",
+              "src": "1380:39:1",
+              "text": "@notice 下注金额无效时抛出"
+            },
+            "errorSelector": "94ce5c95",
+            "id": 241,
+            "name": "InvalidBetAmount",
+            "nameLocation": "1431:16:1",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 240,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 239,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1456:6:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 241,
+                  "src": "1448:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 238,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1448:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1447:16:1"
+            },
+            "src": "1425:39:1"
+          },
+          {
+            "documentation": {
+              "id": 242,
+              "nodeType": "StructuredDocumentation",
+              "src": "1860:71:1",
+              "text": "@notice 下注函数\n @dev 必须附带适当的 ETH 金额"
+            },
+            "functionSelector": "f90f4560",
+            "id": 245,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "placeBet",
+            "nameLocation": "1946:8:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 243,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1954:2:1"
+            },
+            "returnParameters": {
+              "id": 244,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1973:0:1"
+            },
+            "scope": 254,
+            "src": "1937:37:1",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 246,
+              "nodeType": "StructuredDocumentation",
+              "src": "2812:103:1",
+              "text": "@notice 查询用户余额\n @param user 用户地址\n @return 用户的当前余额"
+            },
+            "functionSelector": "f8b2cb4f",
+            "id": 253,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getBalance",
+            "nameLocation": "2930:10:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 249,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 248,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "2949:4:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 253,
+                  "src": "2941:12:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 247,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2941:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2940:14:1"
+            },
+            "returnParameters": {
+              "id": 252,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 251,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 253,
+                  "src": "2978:7:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 250,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2978:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2977:9:1"
+            },
+            "scope": 254,
+            "src": "2921:66:1",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 255,
+        "src": "135:3440:1",
+        "usedErrors": [
+          241
+        ],
+        "usedEvents": [
+          236
+        ]
+      }
+    ],
+    "src": "33:3542:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.20+commit.a1b79de6.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2025-01-02T01:27:27.013Z",
+  "devdoc": {
+    "details": "幸运游戏合约的接口定义",
+    "events": {
+      "Bet(address,uint256)": {
+        "params": {
+          "amount": "下注金额",
+          "user": "下注用户地址"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "getBalance(address)": {
+        "params": {
+          "user": "用户地址"
+        },
+        "returns": {
+          "_0": "用户的当前余额"
+        }
+      },
+      "placeBet()": {
+        "details": "必须附带适当的 ETH 金额"
+      }
+    },
+    "title": "ILuckGame",
+    "version": 1
+  },
+  "userdoc": {
+    "errors": {
+      "InvalidBetAmount(uint256)": [
+        {
+          "notice": "下注金额无效时抛出"
+        }
+      ]
+    },
+    "events": {
+      "Bet(address,uint256)": {
+        "notice": "用户下注时触发"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "getBalance(address)": {
+        "notice": "查询用户余额"
+      },
+      "placeBet()": {
+        "notice": "下注函数"
+      }
+    },
+    "version": 1
+  }
+}
